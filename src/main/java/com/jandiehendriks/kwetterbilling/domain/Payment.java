@@ -21,6 +21,8 @@ public class Payment {
         this.creationDate = creationDate;
         this.amount = amount;
         this.billingUser = billingUser;
+
+        this.billingUser.getPayments().add(this);
     }
 
     public Payment() {}

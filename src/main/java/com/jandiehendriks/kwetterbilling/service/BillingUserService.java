@@ -24,4 +24,8 @@ public class BillingUserService {
 
         return billingUserRepository.save(user);
     }
+
+    public BillingUser getByBillingId(String billingId) {
+        return billingUserRepository.findByBillingId(billingId);
+    }
 }

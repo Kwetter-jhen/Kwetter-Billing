@@ -1,7 +1,9 @@
 package com.jandiehendriks.kwetterbilling.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 public class BillingUser {
@@ -15,10 +17,10 @@ public class BillingUser {
     @OneToMany(mappedBy = "billingUser")
     private List<Payment> payments;
 
-    public BillingUser(String username, String billingId, List<Payment> payments) {
+    public BillingUser(String username) {
         this.username = username;
-        this.billingId = billingId;
-        this.payments = payments;
+        this.billingId = UUID.randomUUID().toString();
+        this.payments = new ArrayList<>();
     }
 
     public BillingUser() {}

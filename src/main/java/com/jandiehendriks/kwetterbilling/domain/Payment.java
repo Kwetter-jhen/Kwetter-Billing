@@ -10,6 +10,7 @@ public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @JsonIgnore
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date creationDate;
     private double amount;

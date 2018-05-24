@@ -1,11 +1,18 @@
 package com.jandiehendriks.kwetterbilling.domain;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
 public class BillingUser {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(unique = true)
     private String username;
+    @Column(unique = true)
     private String billingId;
+    @OneToMany(mappedBy = "billingUser")
     private List<Payment> payments;
 
     public BillingUser(String username, String billingId, List<Payment> payments) {

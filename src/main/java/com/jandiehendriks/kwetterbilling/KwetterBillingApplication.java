@@ -1,5 +1,7 @@
 package com.jandiehendriks.kwetterbilling;
 
+import com.jandiehendriks.kwetterbilling.messaging.BillingUpdateSender;
+import com.jandiehendriks.kwetterbilling.messaging.UserRegistrationReceiver;
 import org.springframework.amqp.core.Queue;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,4 +23,14 @@ public class KwetterBillingApplication {
 	public Queue billingUpdateQueue() {
 		return new Queue("BILLING_USER_UPDATE");
 	}
+
+	@Bean
+	public UserRegistrationReceiver userRegistrationReceiver() {
+	    return new UserRegistrationReceiver();
+    }
+
+    @Bean
+    public BillingUpdateSender billingUpdateSender() {
+	    return new BillingUpdateSender();
+    }
 }
